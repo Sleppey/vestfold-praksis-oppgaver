@@ -7,29 +7,26 @@ async function fetchNrkData() {
             throw new Error(`Response status: ${response.status}`);
         }
 
-        const result = await response.json();
-        return result;
+        return await response.json();
     } catch (error) {
         console.error((error as Error).message);
         return [];
     }
-}
+};
 
-async function getdata() {
+async function getData() {
 
     const data = await fetchNrkData();
-    const datasize = data.length;
-    const recentsong = data[datasize -1]
-    const title = recentsong.title
-    const artist = recentsong.description
-    const albumcover = recentsong.imageUrl
-    const type = recentsong.type
+    const recentSong = data[data.length -1];
+    const title = recentSong.title;
+    const artist = recentSong.description;
+    const albumCover = recentSong.imageUrl;
+    const type = recentSong.type;
     
-    console.log("| Title:", title,"| Artist:", artist,"| CoverURL:", albumcover, "| Type:", type)
-    
-}
+    console.log("| Title:", title,"| Artist:", artist,"| CoverURL:", albumCover, "| Type:", type);
+};
 
-getdata()
+getData();
 
 </script>
 
